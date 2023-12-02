@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>渗透测试论坛页面</title>
+<script src="index.js"></script>
+    <div id="content">
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #000;
+          margin: 0;
+          padding: 0;
+        }
+        .container {
+          max-width: 800px;
+          margin: 50px auto;
+          background-color: #000;
+          color: green;
+          padding: 20px;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .post {
+          margin-bottom: 10px; /* 调整帖子间的间距 */
+          padding: 10px; /* 给帖子增加内边距 */
+          border: 1px solid #ccc; /* 给帖子增加边框 */
+          background-color: #000;
+          color: green;
+        }
+        .post-header {
+          display: flex;
+          align-items: center;
+        }
+        .post-author {
+          font-weight: bold;
+          color: green;
+          margin-right: 10px;
+        }
+        .post-content {
+          white-space: pre-wrap;
+          font-size: 14px; /* 调整帖子内容字体大小 */
+          color: green;
+        }
+      </style>
+      <meta content="default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval';" name="Content-Security-Policy">
+    </head>
+    <body>
+      <div class="container">
+        <p>在这里你可以进行功击，一切数据存在本地所以不存在有泄露风险</p>
+        <font color="red"><h6>你的目标找到管理员控制台，并进入管理员页面，别被安全系统发现了哦(∗ᵒ̶̶̷̀ω˂̶́∗)੭₎₎̊₊♡<h6/></font>
+        <div id="posts"></div>
+        <form id="post-form">
+          <div class="post-header">
+            <input type="text" id="post-author" placeholder="作者">
+            <button type="submit">发布</button>
+          </div>
+          <textarea id="post-content" placeholder="内容" contenteditable="true"></textarea>
+        </form>
+      </div>
+<script>
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('0 j=2.b(\'3\');0 o=2.b(\'1-A\');0 k=2.b(\'1-4\');0 l=2.b(\'1-5\');B 3=[];C c(){j.D=\'\';3.E(1=>{0 6=2.7(\'d\');6.8=\'1\';0 e=2.7(\'d\');e.8=\'1-F\';0 f=2.7(\'G\');f.8=\'1-4\';f.m=1.4;e.9(f);6.9(e);0 g=2.7(\'d\');g.8=\'1-5\';g.m=1.5;6.9(g);0 h=2.7(\'d\');h.8=\'1-a\';h.m=1.a;6.9(h);j.9(6)})}o.H(\'I\',p=>{p.J();0 4=k.i.q();0 5=l.i.q();0 a=r s().t();u(4&&5){3.v({4,5,a});c();k.i=\'\';l.i=\'\';w.x.K(\'3\',y.L(3))}z{M(\'请输入作者和内容\')}});0 n=w.x.N(\'3\');u(n){3=y.O(n);c()}z{3.v({4:"哑巴P",5:"我是开发者，这是第一篇帖子",a:r s().t()});c()}',52,52,'const|post|document|posts|author|content|postElement|createElement|className|appendChild|date|getElementById|renderPosts|div|headerElement|authorElement|contentElement|dateElement|value|postsDiv|postAuthorInput|postContentTextarea|textContent|storedPosts|postForm|event|trim|new|Date|toLocaleString|if|push|window|localStorage|JSON|else|form|let|function|innerHTML|forEach|header|span|addEventListener|submit|preventDefault|setItem|stringify|alert|getItem|parse|010'.split('|'),0,{}))
+</script>
+      <script>
+       
+        const postForm = document.getElementById('post-form');
+        postForm.addEventListener('submit', function(event) {
+          event.preventDefault(); // 阻止表单默认提交行为
+          const postAuthor = document.getElementById('post-author').value;
+          const postContent = document.getElementById('post-content').innerHTML.trim(); 
+          if (postAuthor && postContent) { // 检查输入是否为空
+            renderPosts(postAuthor, postContent); // 渲染帖子，可以在这里添加其他逻辑，比如对帖子内容进行过滤或处理等
+            postForm.reset(); // 重置表单，清空输入框内容
+          } else {
+            alert('请输入作者和内容'); // 没有输入时给出提示信息
+          }
+        });
+      </script>
+    </body>
+  </html>
