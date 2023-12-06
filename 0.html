@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="zh">
+
 <head>
-<meta charset="UTF-8">
-    <title>哑巴教网络技术组织</title>
+
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>哑巴教网络技术组织</title>
+
+</head>
+
 <script src="index.js"></script>
     <style>
         body {
@@ -56,18 +65,13 @@
     </div>
     <div class="advertisement">
         广告位招租
-    </div>
+</div>
     <div class="about">
         <h2 class="fade-in">介绍</h2>
         <p class="fade-in">我们是一个提供网络技术学习和资源分享的交流平台组织，欢迎加入我们一起学习计算机</p>
         <h3 class="fade-in">电脑与他的灵魂之间似乎有一条脐带相连。这就是为什么只要他在计算机面前，他就会成为巨人的原因</h3>
         <h3 class="fade-in">我心皆是理，心中所想，做之所想，行之我心，欢喜心做人做事，想过什么样的生活就去创造什么样的未来</h3>
-<ul>
-        <li><a href="1.html">进入渗透测试页面，请遵守规则；本组织所有成员都有资格进行渗透测试</a></li>
-        <li><a href="Td.html">性能监视器，可以你设备型号和网页响应速度等等</a></li>
-  
-</ul>
-    </div>
+</div>
     <div class="event-box">
         <h2 class="fade-in">重大事件</h2>
         <h3 class="fade-in">本组织核心管理成员:哑巴(哑巴0000-D001)、 小奈、(哑巴010-A001) 、阳佟雨寒(哑巴008-Z001)、 Apical(哑巴/36-Z002)</h3>
@@ -77,11 +81,11 @@
         <h2 class="fade-in">其他链接</h2>
         <p class="fade-in">这里有一些我们觉得对您有帮助的链接:</p>
         <ul>
-            <li><a href="https://lanhz.com/">蓝盒子，一个开源软件交流，拥有很多教程的网站</a></li>
-            <li><a href="https://cn.0day.today/exploit/description/39149">0day，一个数据库漏洞代码交流网站</a></li>
-            <li><a href="https://pan.quark.cn/s/1efe47674a8a">前端js防爬虫系统</a></li>
-            <li><a href="https://pan.quark.cn/s/3e01cd077b33">后端js爬虫系统(可以防一定的ddos)，可以自己研究研究</a></li>
-            <li><a href="https://pan.quark.cn/s/5a4d7eec94c8">前端防恶意访问JS系统</a></li>
+            <li><a href="https://lanhz.com/" style="color: blue;">蓝盒子，一个开源软件交流，拥有很多教程的网站</a></li>
+            <li><a href="https://cn.0day.today/exploit/description/39149" style="color: blue;">0day，一个数据库漏洞代码交流网站</a></li>
+            <li><a href="https://pan.quark.cn/s/1efe47674a8a"style="color: blue;">前端js防爬虫系统</a></li>
+            <li><a href="https://pan.quark.cn/s/3e01cd077b33"style="color: blue;">后端js防爬虫系统(可以防一定的ddos)，可以自己研究研究</a></li>
+            <li><a href="https://pan.quark.cn/s/5a4d7eec94c8"style="color: blue;">前端js防用户恶意访问系统</a></li>
         </ul>
     </div>
     <div class="contact-box"> 
@@ -107,6 +111,199 @@
 </div>
 </body>
 </head>
-</html>
+<body>
+
+	<div>
+
+		<div id="hend">
+
+			<div id="button1" onclick="opnemanu()">open</div>
+
+			<div id="button2" onclick="colesmanu()">coles</div>
+
+		</div>
+
+		<div id="manu" class="manu">
+
+			<h3>菜单</h3>
+
+			<div id="box">
+                        <a onclick="colesmanu()" href="1.html" target="as">渗透测试页面</a>
+
+			</div>
+			<div id="box">
+                         <a onclick="colesmanu()" href="Td.html" target="as">性能监视器</a>
+
+			</div>
+       </div>
+		<div id="body">
+
+			</div>
+
+	</div>
+
 </body>
-</html>
+
+<style>
+
+	*{
+
+		padding: 0;
+
+		margin: 0;
+
+	}
+
+	#hend{
+
+		height: 5vh;
+
+		line-height: 5vh;
+
+		width: 100%;
+
+		 background-color: black; 
+
+	}
+
+	#body{
+
+		height: 95vh;
+
+		width: 100%;
+
+		/* background-color: hotpink; */
+
+	}
+
+	#button1{
+
+		background-color: Yellow;
+
+	}
+
+	#button2{
+
+		background-color: red;
+
+		display: none;
+
+	}
+
+	#button1,#button2{
+
+		width: 80px;
+
+		height: 5vh;
+
+		line-height: 5vh;
+
+		float: right;
+
+		color: green;
+
+		text-align: center;
+
+		cursor: pointer;
+
+	}
+
+	#manu{
+
+		position: absolute;
+
+		top: 5vh;
+
+		left: 0;
+
+		width: 30%;
+
+		transition:all 1s;
+
+		text-align: center;
+
+		background-color: aliceblue;
+
+	}
+
+	.manu{
+
+		position: absolute;
+
+		width: 30%;
+
+		margin-left: -30%;
+
+		transition:all 1s;
+
+		background-color: aliceblue;
+
+	}
+
+	a{
+
+		color: white;
+
+		transition: all 0.5s;
+
+		display: block;
+
+		text-decoration: none;
+
+	}
+
+	#box{
+
+		width: 100%;
+
+		margin-top: 5px;
+
+		text-align: center;
+
+		background-color: orange;
+
+		word-wrap: break-word;
+
+	}
+
+</style>
+
+<script type="text/javascript">
+
+//打开侧边栏
+	function opnemanu(){
+
+		var btn1=document.getElementById('button1');
+
+		var btn2=document.getElementById('button2');
+
+		var manu=document.getElementById('manu');
+
+		btn1.style.display="none";
+
+		btn2.style.display="block";
+
+		manu.classList.remove('manu');
+
+	}
+
+//关闭侧边栏
+	function colesmanu(){
+
+		var btn1=document.getElementById('button1');
+
+		var btn2=document.getElementById('button2');
+
+		var manu=document.getElementById('manu');
+
+		btn2.style.display="none";
+
+		btn1.style.display="block";
+
+		manu.classList.add('manu');
+
+	}
+
+</script>
+
+    </html>
