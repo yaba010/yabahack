@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>哑巴教网络技术组织</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        h1, h4 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #content {
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: red;">不准用它违法犯罪，否则用户自己承担</h1>
+    <h1>自动刷新页面</h1>
+    <h4>直接输入链接，每0.001秒进行一直访问刷新，再点击输多加一个框访问刷新，不访问直接退出！</h4>
+ 
+    <input type="text" id="urlInput" placeholder="输入链接">
+    <button onclick="startRefresh()">开始</button>
+    <div id="content"></div>
+    <script>
+        function startRefresh() {
+            var urlInput = document.getElementById("urlInput").value;
+            var iframe = document.createElement("iframe");
+            iframe.src = urlInput;
+            iframe.name = "iframe";
+            document.getElementById("content").appendChild(iframe);
+            setInterval(function() {
+                iframe.src = urlInput;
+            }, 10);
+        }
+    </script>
+</body>
+</html>
