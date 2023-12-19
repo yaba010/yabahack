@@ -1,22 +1,12 @@
-// 混淆和加密源代码function obfuscateSourceCode(sourceCode) {
-  // 将源代码转换为字符串
-  const sourceCodeString = sourceCode.toString();
-  // 创建一个混淆和加密的函数
-  const obfuscatedCode = `
-    (function() {
-      var originalCode = "${sourceCodeString}";
-      var obfuscatedCode = "";
-      var charCode = originalCode.charCodeAt(0);
-      while (charCode > 0) {
-        var randomCharCode = Math.floor(Math.random() * 100) + 1;
-        obfuscatedCode += String.fromCharCode(charCode % randomCharCode);
-        charCode = Math.floor(charCode / randomCharCode);
-      }
-      eval(obfuscatedCode);
-    })();
-  `;
-  // 返回混淆和加密后的函数
-  return obfuscatedCode;
-}
-// 将源代码混淆和加密并插入到页面中const obfuscatedCode = obfuscateSourceCode(document.documentElement.innerHTML);
-document.documentElement.innerHTML = obfuscatedCode;
+window.onload = function() {
+    // 正常显示页面内容
+    var content = document.body.innerHTML;
+    document.body.innerHTML = content;
+
+    // 当用户尝试获取源代码时显示乱码
+    window.oncontextmenu = function(e) {
+        e.preventDefault();
+        alert('您正在尝试查看源代码，但源代码已被加密。请不要尝试获取或复制此页面的内容。');
+        return false;
+    };
+};
