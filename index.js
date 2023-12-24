@@ -1,35 +1,29 @@
-// 定义一个数组，包含一些常见的爬虫字符串const commonSpiderStrings = [
-  'bot',
-  'spider',
-  'Google',
-  'Baidu',
-  'WebCrawler',
-  'crawler',
-  'scraper'
-];
-// 获取页面上的所有输入框元素const inputElements = document.getElementsByTagName('input');
-// 为每个输入框元素添加事件监听器for (let i = 0; i < inputElements.length; i++) {
-  inputElements[i].addEventListener('input', function(event) {
-    // 检查输入框的值是否包含爬虫字符串
-    for (let j = 0; j < commonSpiderStrings.length; j++) {
-      if (event.target.value.includes(commonSpiderStrings[j])) {
-        // 如果检测到爬虫字符串，阻止默认行为并显示警告消息
-        event.preventDefault();
-        alert('检测到爬虫字符串，禁止进行下一步操作！');
-        break;
-      }
-    }
-  });
-}
-// 每秒检查一次页面源代码中是否包含爬虫字符串setInterval(() => {
-  const sourceCode = document.documentElement.outerHTML;
-  for (let j = 0; j < commonSpiderStrings.length; j++) {
-    if (sourceCode.includes(commonSpiderStrings[j])) {
-      // 如果检测到爬虫字符串，使用垃圾延迟来阻止爬虫行为
-      while (true) {
-        // 制造大量垃圾延迟，以阻止爬虫继续执行其他操作
-        const x = new Array(1000000).fill('x'); // 创建一个包含一百万个字符'x'的数组
-      }
-    }
-  }
-}, 1000);
+// 创建一个对象来封装爬虫检测和处理逻辑
+const spiderChecker = {
+  // 检测函数
+  isSpider: function() {
+    const spiderRegex1 = /(bot|spider|crawl|slurp|curl|libwww|wget|http\d?check|python|java|ZmEu|adwords|yandex|rambler|mail\.ru|seznam|semager|NING|boitho|scooter|埃尔法|newspider|spidey|robot|disco|spiderman|new-spider|fresh-spider|spider-test)/i;
+    const additionalSpiderRegex = /(additional-spider-pattern1|additional-spider-pattern2|...)/i; // 添加更多爬虫标识符的正则表达式
+    const ua = navigator.userAgent;
+    return spiderRegex1.test(ua) || additionalSpiderRegex.test(ua); // 检测是否匹配新增的爬虫标识符
+  },
+  // 处理逻辑
+  handleSpider: function() {
+    try {
+      if (this.isSpider()) {
+        window.location.href = 'index.html'; // 重定向到"index.html"
+        // 禁止移动
+        document.getElementById("content").style.pointerEvents = "none"; // 禁止复制文本
+        document.getElementById("content").oncontextmenu = function(e) { e.preventDefault(); }; // 禁止复制文本
+        document.getElementById("content").oncopy = function(e) { e.preventDefault(); }; // 禁止复制文本
+        document.getElementById("content").oncut = function(e) { e.preventDefault(); }; // 禁止复制文本
+        // 禁止点击
+        document.getElementById("content").onclick = function(e) { e.preventDefault(); }; // 永久封闭在安全界面
+        window.onload = function() {
+          setTimeout(function() {
+            window.location.href = "no.html"; // 重定向到"no.html"
+          }, 2000); // 2秒后重定向到"no.html"
+        }; // 设置定时器，每隔一段时间执行一次检测函数和处理逻辑的更新
+        setInterval(function() {
+          spiderChecker.handleSpider(); // 执行检测函数和处理逻辑的更新
+        }, 6000); // 每6秒更新一次（可根据需求进行调整）};      }    } catch (error) {    // 网络延迟导致的错误处理，稍后再次尝试执行检测    setTimeout(function() {      window.onload(); // 重新执行检测函数和处理逻辑    }, 2000); // 2秒后再次尝试执行检测函数和处理逻辑  }    // 设置定时器，每隔一段时间执行一次检测函数和处理逻辑的更新  setInterval(function() {    spiderChecker.handleSpider(); // 执行检测函数和处理逻辑的更新  }, 6000); // 每6秒更新一次（可根据需求进行调整）};
