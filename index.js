@@ -10,7 +10,7 @@ const spiderChecker = {
   handleSpider: function() {
     try {
       if (this.isSpider()) {
-        // 重定向到"index.html"
+   
         // 禁止移动
         document.getElementById("content").style.pointerEvents = "none"; // 禁止复制文本
         document.getElementById("content").oncontextmenu = function(e) { e.preventDefault(); }; // 禁止复制文本
@@ -22,6 +22,19 @@ const spiderChecker = {
         // 禁止获取源代码
         document.getElementById("content").onbeforecopy = function(e) { e.preventDefault(); }; // 禁止复制文本
         document.getElementById("content").onbeforecut = function(e) { e.preventDefault(); }; // 禁止剪切文本
+        // 降低爬虫访问速度和生成垃圾内容
+        const contentElement = document.getElementById("content");
+        let delay = 0; // 设置延迟时间（毫秒）
+        let delayIncrease = 500; // 延迟时间增加量（毫秒）
+        let maxDelay = 5000; // 最大延迟时间（毫秒）
+        let counter = 0; // 计数器，用于计算延迟时间增加的次数
+        setInterval(() => {
+          delay += delayIncrease; // 增加延迟时间
+          if (delay > maxDelay) delay = maxDelay; // 限制最大延迟时间
+          contentElement.innerHTML += "<!-- This is a dummy content to slow down the crawler -->"; // 生成垃圾内容
+          counter++; // 计数器增加
+          if (counter >= 3) clearInterval(setInterval); // 当计数器达到3时停止增加延迟时间，但继续生成垃圾内容
+        }, delay); // 设置定时器，每一定时间执行一次回调函数
       }
     } catch (error) {
       console.error("Error in spiderChecker:", error);
